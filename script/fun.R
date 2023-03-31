@@ -1,3 +1,9 @@
+# Fancy list of matrix print function
+print_list_matrix <- function(list){
+  sapply(names(list), function(x) setNames(dim(list[[x]]), c("row", "col")))
+}
+
+# Aggregated TS (future release on FoReco)
 agg_ts <- function(agg_order, x, align = "end", rm_na = FALSE){
   if(is.ts(x)){
     tspx <- tsp(x)
@@ -50,6 +56,7 @@ agg_ts <- function(agg_order, x, align = "end", rm_na = FALSE){
   return(out)
 }
 
+# Plot K = {24, 8, 4, 1} agg ts
 plot_agg_time <- function(x, title = "none"){
   rbind(tibble(value = x, 
                time = seq(from = as.POSIXct("2006-05-03 00:00:00", tz="UTC"), 
